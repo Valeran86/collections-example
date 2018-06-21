@@ -1,8 +1,2 @@
-ru\sbt\collections\PrintLines.class
-ru\sbt\collections\ReverseInputStrings.class
-ru\sbt\collections\Counter1DifferentWords.class
-ru\sbt\collections\SortedListOfUniqueWords.class
-ru\sbt\collections\Reader.class
-ru\sbt\collections\SortedListOfUniqueWords$AlphabeticalOrderComparator.class
-ru\sbt\collections\Iterator.class
-ru\sbt\collections\WordsCounter.class
+ru/sbt/collections/Iterator$MyList.class
+ru/sbt/collections/Iterator$MyList$1.class
