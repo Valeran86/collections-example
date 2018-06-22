@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.regex.Pattern;
 
 /**
- * Выведите на экран список различных слов файла, отсортированный по возрастанию их длины.
+ * Выведите на экран список различных слов файла, отсортированный по возрастанию их длины. 
  */
 public class Counter2DifferentWords {
     public static void main(String[] args) throws IOException, URISyntaxException {
