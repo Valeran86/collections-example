@@ -36,7 +36,7 @@ public class Counter2DifferentWords {
             for(String word : hs) {
                 if(word.length() == j){
                     i++;
-                    System.out.println("" + i + " " + word);
+                    System.out.println("" + i + " " + word + " (" + j + ")");
                 }
             }
         }
