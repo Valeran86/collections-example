@@ -2,21 +2,18 @@ package ru.sbt.collections;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.*;
-import java.util.ListIterator;
 
 //Задание 5: Реализуйте свой Iterator для обхода списка в обратном порядке.
 public class Iterator {
     public static void main( String[] args ) throws IOException, URISyntaxException {
-        MyList words = new MyList(Reader.read());
+        MyList words = new MyList(Reader.readWords());
         for (String word: words) {
             System.out.println(word);
         }
     }
     public static class MyList implements Iterable<String> {
 
-        private String[] arrayList;
+        private final String[] arrayList;
 
         public MyList(String[] newArray) {
             this.arrayList = newArray;

@@ -10,25 +10,21 @@ import java.util.ArrayList;
 
 public class Reader {
 
-    public static String[] read() throws IOException, URISyntaxException {
+    public static String[] readWords() throws IOException, URISyntaxException {
+        return read("[\n\r .,()?;]");
+    }
+    public static String[] readLines() throws IOException, URISyntaxException {
+        return read("\n");
+    }
+    private static String[] read(String pattern) throws IOException, URISyntaxException {
         InputStream resourceAsStream = Counter1DifferentWords.class.getResourceAsStream("/ru/sbt/collections/VeryBigText.txt");
         String lines = IOUtils.toString( resourceAsStream, "UTF8" );
-        String[] words = lines.split("[\n\r .,()?;]");
+        String[] words = lines.split(pattern);
         ArrayList<String> result = new ArrayList<>();
         for (String word: words) {
             if (!"".equals(word))
                 result.add(word);
         }
-        return  result.toArray(new String[0]);
-    }
-    public static String[] readLines() throws IOException, URISyntaxException {
-        InputStream resourceAsStream = Counter1DifferentWords.class.getResourceAsStream("/ru/sbt/collections/VeryBigText.txt");
-        String lines = IOUtils.toString( resourceAsStream, "UTF8" );
-        String[] words = lines.split("\n");
-        ArrayList<String> result = new ArrayList<>();
-        for (String word: words) {
-            result.add(word);
-        }
-        return  result.toArray(new String[0]);
+        return result.toArray(new String[0]);
     }
 }

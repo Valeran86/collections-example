@@ -15,6 +15,8 @@ public class PrintLines {
             int n = scanner.nextInt();
             if (n >= lines.length)
                 System.out.println("Введенное число больше длины массива");
+            else if (n < 0)
+                System.out.println("Введенное число меньше 0");
             else
                 System.out.println(lines[n]);
         }

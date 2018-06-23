@@ -1,10 +1,7 @@
 package ru.sbt.collections;
 
 
-import org.apache.commons.io.IOUtils;
-
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.HashSet;
 
@@ -14,7 +11,7 @@ import java.util.HashSet;
 public class Counter1DifferentWords {
 
     public static void main( String[] args ) throws IOException, URISyntaxException {
-        String[] words = Reader.read();
+        String[] words = Reader.readWords();
         HashSet<String> unique = new HashSet<>();
         for (String word :words) {
             unique.add(word);
