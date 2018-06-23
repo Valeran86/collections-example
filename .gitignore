@@ -4,3 +4,7 @@
 
 # maven
 target/
+
+#other
+*.docx
+HomeWork2-1.txt
