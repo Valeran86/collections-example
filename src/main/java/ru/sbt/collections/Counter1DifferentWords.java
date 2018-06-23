@@ -89,14 +89,8 @@ public class Counter1DifferentWords {
 
         for (int i=0; i<userNum.size(); i++) {
             System.out.println(lWords.get(userNum.get(i)));
-
         }
-
-
     }
-
-
-
 }
 
 
