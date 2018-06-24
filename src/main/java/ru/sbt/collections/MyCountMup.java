@@ -9,28 +9,21 @@ public class MyCountMup<T> implements CountMap<T> {
 
     @Override
     public void add(T o) {
-        if(!myMap.containsKey(o)){
-            myMap.put(o,1);
-        }else{
-            myMap.put(o,myMap.get(o)+1);
-        }
+        myMap.merge(o,1,Integer::sum);
     }
 
     @Override
     public int getCount(T o) {
-        return myMap.getOrDefault(o, 0); //myMap.containsKey(o)?myMap.get(o):0;
+        return myMap.getOrDefault(o, 0);
     }
 
     @Override
     public int remove(T o) {
-        Integer countObj=0;
-        if(myMap.containsKey(o)){
-            countObj=myMap.get(o);
-            if(countObj>1){
-                myMap.put(o,myMap.get(o)-1);
-            }else{
-                myMap.remove(o);
-            }
+        Integer countObj=myMap.get(o);
+        if(countObj<2){
+            myMap.remove(o);
+        }else{
+            myMap.put(o,countObj--);
         }
         return countObj;
     }
@@ -53,7 +46,7 @@ public class MyCountMup<T> implements CountMap<T> {
 
     @Override
     public Map<T, Integer> toMap() {
-        return myMap;
+        return new HashMap<>(myMap);
     }
 
     @Override
