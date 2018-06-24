@@ -14,7 +14,7 @@ public class FourthTask {
 
     public TreeSet<String> revertData()
     {
-        TreeSet<String> strings = new TreeSet<String>();
+        TreeSet<String> strings = new TreeSet<>();
         Collections.addAll(strings, this.strings);
         strings.descendingSet();
         return strings;

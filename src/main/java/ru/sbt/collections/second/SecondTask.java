@@ -1,24 +1,22 @@
 package ru.sbt.collections.second;
 
 import ru.sbt.collections.first.FirstTask;
-
 import java.util.*;
 
 public class SecondTask extends FirstTask {
-    String[] words;
+    String[] wordsArray;
 
     public SecondTask(String[] words){
         super(words);
-        this.words = words;
+        this.wordsArray = words;
     }
 
     public void getSortedArrayWordsToLength()
     {
-        List<String> words = new ArrayList<String>();
-        Collections.addAll(words, this.words);
-
+        List<String> words = new ArrayList<>();
+        Collections.addAll(words, this.wordsArray);
         Comparator<String> wordsSorter = (word1, word2) -> word1.length() - word2.length();
-        words.stream().sorted(wordsSorter).forEach(System.out::println);
-
+        //первый .sorted() сортирует еще и по алфавиту, второй по условию
+        words.stream().sorted().sorted(wordsSorter).forEach(System.out::println);
     }
 }

@@ -11,7 +11,7 @@ public class FifthTask{
     }
 
     public void showAllRevertStrings(){
-        ReversIterator<String> arrayStrings = new ReversIterator<String>(this.strings);
+        ReversIterator<String> arrayStrings = new ReversIterator<>(this.strings);
         for(String string : arrayStrings) {
             System.out.println(string);
         }

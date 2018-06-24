@@ -16,10 +16,10 @@ public class FirstTask {
 
     public Map<String, Long> getUniqueWords()
     {
-        Map<String, Long> map = Arrays.stream(this.words)
+        Map<String, Long> mapArray = Arrays.stream(this.words)
                 .collect(Collectors.groupingBy(s -> s, Collectors.counting()));
 
-        return map;
+        return mapArray;
     }
 
     public void printCountUniqueSizeWords()

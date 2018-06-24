@@ -6,11 +6,9 @@ import java.util.*;
 
 public class ThirdTask extends FirstTask {
 
-    String[] words;
-
     public ThirdTask(String[] words){
         super(words);
-        this.words = words;
+
     }
 
     public void showUniqueWords(){

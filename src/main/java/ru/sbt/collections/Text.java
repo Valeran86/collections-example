@@ -10,10 +10,6 @@ import java.net.URISyntaxException;
  */
 public class Text {
 
-    public Text(){
-
-    }
-
     public static String getText()throws IOException, URISyntaxException {
         InputStream resourceAsStream = Counter1DifferentWords.class.getResourceAsStream("/ru/sbt/collections/VeryBigText.txt");
         String lines = IOUtils.toString( resourceAsStream, "UTF8" );
@@ -29,7 +25,7 @@ public class Text {
 
     public static String[] getStringsInArray()throws IOException, URISyntaxException {
         String words = Text.getText();
-        String[] arrayWords = words.split("\\.+");
-        return arrayWords;
+        String[] arrayStrings = words.split("\\.+");
+        return arrayStrings;
     }
 }
