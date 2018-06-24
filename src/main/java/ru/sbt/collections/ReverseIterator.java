@@ -12,7 +12,7 @@ public class ReverseIterator <T> implements Iterator<T> {
     public ReverseIterator(List list){
         this.list = list;
         cursor = list.size()-1;
-        
+
     }
 
     @Override
