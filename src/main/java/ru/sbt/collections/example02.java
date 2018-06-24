@@ -25,14 +25,7 @@ public class example02 {
                 treeMap.get(s.length()).add(s);
             }
         }
-
-        /*
-        while (iterator.hasNext()){
-            String stroka = iterator.next();
-            if (!treeMap.containsKey(stroka.length())) treeMap.put(stroka.length(), new ArrayList<String>());
-            treeMap.get(stroka.length()).add(stroka);
-        }*/
-
+        
         System.out.println(treeMap.toString());
 
 
