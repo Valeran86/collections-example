@@ -25,7 +25,7 @@ public class example02 {
                 treeMap.get(s.length()).add(s);
             }
         }
-        
+
         System.out.println(treeMap.toString());
 
 
