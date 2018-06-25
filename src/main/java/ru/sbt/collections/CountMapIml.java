@@ -6,7 +6,7 @@ import java.util.Map;
 public class CountMapIml <T> implements CountMap <T> {
     public CountMapIml() {}
     // добавляет элемент в этот контейнер.
-    Map<T, Integer> map = new HashMap<T, Integer>();
+    private Map<T, Integer> map = new HashMap<T, Integer>();
     public void add(T o) {
         int value=1;
         map.merge(o, value, Integer::sum);
