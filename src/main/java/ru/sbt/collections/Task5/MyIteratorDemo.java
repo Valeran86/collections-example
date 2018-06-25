@@ -13,6 +13,6 @@ public class MyIteratorDemo {
     public static void main(String[] args) {
         String[] strings = {"0", "1", "2", "3", "4", "5", "6"};
         List<String> list = Arrays.asList(strings);
-        MyIterator iter = (MyIterator) list.listIterator();
+        //MyIterator iter = (MyIterator) list.listIterator();
     }
 }
