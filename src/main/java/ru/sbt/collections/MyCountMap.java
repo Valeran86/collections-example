@@ -40,7 +40,8 @@ public class MyCountMap <E> implements CountMap<E>{
 
     //Вернуть java.util.Map. ключ - добавленный элемент, значение - количество его добавлений
     public Map toMap() {
-        return container;
+        Map<E, Integer> newContainer = new HashMap<E, Integer>(container);
+        return newContainer;
     }
 
     //Тот же самый контракт как и toMap(), только всю информацию записать в destination

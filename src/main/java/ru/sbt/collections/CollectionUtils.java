@@ -23,9 +23,9 @@ public class CollectionUtils {
     }
 
     //вернуть лист длиной не более size
-    public static <T> List limit(List<? extends T> source, int size) {
-        List<T> newlist = new ArrayList<T>(size);
-        newlist.addAll( source );
+    public static <T> List<? super T> limit(List<? extends T> source, int size) {
+        List<? super T> newlist = new ArrayList<>(size);
+        newlist = Collections.singletonList( source.subList( 0, size ) );
         return newlist;
     }
 
