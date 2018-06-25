@@ -35,8 +35,6 @@ public class Counter1DifferentWords {
             if ((words!=null)&&(!words[i].equals("")))
             map.put(words[i], frequency == null ? 1 : frequency + 1);
         }
-
-
         for (Map.Entry<String, Integer> pair : map.entrySet()) {
             if (pair.getValue()==null) {
                 System.out.println("Слово " + pair.getKey() + "встречается 0 раз");
