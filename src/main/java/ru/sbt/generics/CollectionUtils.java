@@ -15,7 +15,7 @@ public class CollectionUtils {
 
     //Создать новый List из c вернуть в виде List
     public static  <T> List newArrayList( List <? extends T> c ) {
-        ArrayList<? super T> newUserArray = new ArrayList <>();
+        List<? super T> newUserArray = new ArrayList <>();
         newUserArray.addAll( c );
         return newUserArray;
     }
@@ -27,7 +27,7 @@ public class CollectionUtils {
 
     //вернуть лист длиной не более size
     public static <T> List limit( List <? extends T> source, int size ) {
-        ArrayList<? super T> newUserArray = new ArrayList( source.subList( 0,size ) );
+        List<? super T> newUserArray = new ArrayList( source.subList( 0,size ) );
         return newUserArray;
     }
 
@@ -38,7 +38,7 @@ public class CollectionUtils {
 
     //удалить все вхождения элемента c2 (метод передает данные в аргумент)
     public static <T> void removeAll( List <? super T> removeFrom, T c2 ) {
-        removeFrom.remove( c2 );
+        removeFrom.removeAll( Collections.singleton(c2) );
     }
 
     //true если первый лист содержит все элементы второго
@@ -55,7 +55,7 @@ public class CollectionUtils {
     //Возвращает лист, содержащий элементы из входного листа в диапазоне от min до max.
     // Элементы сравнивать через Comparable.
     public static <T extends Comparable<T>> List range( List <? extends T> list, T min, T max ) {
-        ArrayList<? super T> rangeOnArray = new ArrayList<>();
+        List<? super T> rangeOnArray = new ArrayList<>();
 
         Collections.sort(list);
         for(T element : list){
@@ -69,7 +69,7 @@ public class CollectionUtils {
     //Возвращает лист, содержащий элементы из входного листа в диапазоне от min до max.
     // Элементы сравнивать через comparator.
     public static <T> List range( List <? extends T> list, T min, T max, Comparator <T> comparator ) {
-        ArrayList<? super T> rangeOnArray = new ArrayList<>();
+        List<? super T> rangeOnArray = new ArrayList<>();
         Collections.sort(list, comparator);
         for(T element : list){
             if(comparator.compare(element, min ) >= 0 && comparator.compare(element, max ) <= 0){
