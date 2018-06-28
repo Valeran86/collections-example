@@ -5,33 +5,31 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.util.*;
 
-import static ru.sbt.collections.Util.lines2words;
-import static ru.sbt.collections.Util.words2set;
+import static ru.sbt.collections.Util.*;
 
 /**
  * Подсчитайте количество различных слов в файле.
  */
 public class Counter1DifferentWords {
 
-    public static void main( String[] args ) throws IOException, URISyntaxException {
+    public static void main( String[] args ) throws IOException {
         InputStream resourceAsStream = Counter1DifferentWords.class.getResourceAsStream( "/ru/sbt/collections/VeryBigText.txt" );
         String lines = IOUtils.toString( resourceAsStream, "UTF8" );
 
-        lesson1( lines );
+        /*lesson1( lines );
         lesson2( lines );
         lesson3( lines );
         lesson4( lines );
-        lesson5( lines );
+        lesson5( lines );*/
         lesson6( lines );
     }
 
     // Задание 1: Подсчитайте количество различных слов в файле.
     public static void lesson1( String lines ) {
         List<String> items = Arrays.asList( lines2words( lines ) );
-        Set<String> set = words2set( items );
+        Set<String> set = new HashSet<>( items );
         System.out.println( "================================ Задание 1: Подсчитайте количество различных слов в файле." );
         System.out.println( "Уникальных слов = " + set.size() );
 
@@ -40,9 +38,8 @@ public class Counter1DifferentWords {
     // Задание 2: Выведите на экран список различных слов файла, отсортированный по возрастанию их длины.
     public static void lesson2( String lines ) {
         List<String> items = Arrays.asList( lines2words( lines ) );
-        Set<String> set = words2set( items );
+        Set<String> set = new HashSet<>( items );
         List<String> mainList = new ArrayList<>( set );
-
         Comparator<String> stringLengthComparator = new Comparator<String>() {
             @Override
             public int compare( String o1, String o2 ) {
@@ -98,8 +95,12 @@ public class Counter1DifferentWords {
         String enterLine = scanner.nextLine();
         String[] nums = enterLine.split( "[^0-9]+" );
         for ( int i = 0; i < nums.length; i++ ) {
-            System.out.println( "===================== Строка: " + nums[ i ] );
-            System.out.println( items.get( Integer.parseInt( nums[ i ] ) - 1 ) );
+            try {
+                System.out.println( "===================== Строка: " + nums[ i ] );
+                System.out.println( items.get( Integer.parseInt( nums[ i ] ) - 1 ) );
+            } catch ( IndexOutOfBoundsException e) {
+                System.out.println( "Такой нет строки в файле!" );
+            }
         }
     }
 }
