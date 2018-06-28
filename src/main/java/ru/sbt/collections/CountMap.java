@@ -32,10 +32,10 @@ public class CountMap<T> implements ICountMap<T> {
     }
 
     public Map toMap() {
-        return new HashMap<>(map);
+        return new HashMap<>( map );
     }
 
     public void toMap( Map destination ) {
-        destination.putAll(map);
+        destination.putAll( map );
     }
 }
