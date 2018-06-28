@@ -8,10 +8,12 @@ public class CountMap<T> implements ICountMap<T> {
     private Map<T, Integer> map = new HashMap<>();
 
     public void add( T o ) {
+
         map.merge( o, 1, Integer::sum );
     }
 
     public int getCount( T o ) {
+
         return map.getOrDefault( o, 0 );
     }
 
