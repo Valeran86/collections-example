@@ -39,8 +39,11 @@ public class Counter1DifferentWords {
     }
 
    public static void task1 (String text){
-        if (text == null) return ;
-       Set  <String> set = new HashSet(Arrays.asList(text2words (text))) ;
+        if (text == null)
+            return ;
+        // рефакторинг
+       String[] words = text2words( text );
+       Set<String> set = new HashSet<>( Arrays.asList( words  ) ) ;
        System.out.println( set.size()) ;
    }
 
@@ -51,8 +54,10 @@ public class Counter1DifferentWords {
                     @Override
                     public int compare(String o1, String o2) {
                      int res = o1.length() - o2.length();
-                     if (res==0) return 0;
-                     if (res>0) return 1;
+                     if (res==0)
+                         return o1.compareTo(o2);
+                     if (res>0)
+                         return 1;
                      return -1;
                     }
                 }
@@ -63,7 +68,8 @@ public class Counter1DifferentWords {
         }
     }
     public static void task3(String text) {
-        if (text == null) return;
+        if (text == null)
+            return;
         HashMap <String, Integer> hs_word_count = new HashMap<>();
 
         for (String word:  text2words (text)) {
@@ -76,17 +82,23 @@ public class Counter1DifferentWords {
     }
 
     public static void task4(String text) {
-        if (text == null) return;
-        List <String> stringList = new ArrayList<>(Arrays.asList(text.split("[\n]")));
-        for ( int i = stringList.size()-1;i>=0;i--){
-            System.out.println(stringList.get(i));
+        // рефакторинг
+        if (text == null)
+            return;
+        String [] textlines = text.split("[\n]");
+        // Задача стоит вывести список в обратном порядке на экран, преобразование в список лишнее
+        //   убираем преобразование  и выводим массив сразу в обратном порядке
+
+        for ( int i = textlines.length-1;i>=0;i--){
+            System.out.println(textlines[i]);
         }
 
     }
 
     public static void task5(String text) {
 
-        if (text == null) return;
+        if (text == null)
+            return;
            class  InversIterator  <E> implements Iterator  {
 
             private int currentposition ;
@@ -123,7 +135,8 @@ public class Counter1DifferentWords {
        while (true) {
            System.out.println("Введите номер строки для вывода текста в пределах от 1 до " + stringList.size() + " для выхода введите 0");
            linenumber = consoleinput.nextInt();
-           if (!(linenumber >0 && linenumber <= stringList.size())) break ;
+           if (!(linenumber >0 && linenumber <= stringList.size()))
+               break ;
            System.out.println(stringList.get(linenumber-1));
        }
 
