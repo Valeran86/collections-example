@@ -13,7 +13,7 @@ public class CollectionUtils {
     //Создать новый List из c вернуть в виде List
     public static <T> List newArrayList(List <? extends T> source) {
         List<T> list = new ArrayList<>(source);
-        return (List) list;
+        return (List<T>) list;
     }
     //индекс элемента в листе
     public static <T> int indexOf(List <? extends T> source, Object o) {

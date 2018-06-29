@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CountMapIml <T> implements CountMap <T> {
-    public CountMapIml() {}
     // добавляет элемент в этот контейнер.
     private Map<T, Integer> map = new HashMap<T, Integer>();
     public void add(T o) {
@@ -15,7 +14,6 @@ public class CountMapIml <T> implements CountMap <T> {
     //Возвращает количество добавлений данного элемента
     public int getCount(T o) {
         return map.get(o);
-
     }
 
     //Удаляет элемент из контейнера и возвращает количество его добавлений (до удаления)
@@ -40,7 +38,8 @@ public class CountMapIml <T> implements CountMap <T> {
 
     //Вернуть java.util.Map. ключ - добавленный элемент, значение - количество его добавлений
     public Map<T, Integer> toMap() {
-        return map;
+        Map<T, Integer>  map1 = new HashMap<T, Integer>(map);
+        return map1;
     }
 
     //Тот же самый контракт как и toMap(), только всю информацию записать в destination
