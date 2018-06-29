@@ -23,34 +23,19 @@ public class Counter1DifferentWords {
         InputStream resourceAsStream = Counter1DifferentWords.class.getResourceAsStream("/ru/sbt/collections/VeryBigText.txt");
         String lines = IOUtils.toString(resourceAsStream, "UTF8");
 
-        task1(lines);  System.out.println("-------------------------------------------");
-        task2(lines);  System.out.println("-------------------------------------------");
-        task3(lines);  System.out.println("-------------------------------------------");
-        task4(lines);  System.out.println("-------------------------------------------");
-        task5(lines);  System.out.println("-------------------------------------------");
-        task6(lines);  System.out.println("-------------------------------------------");
+        task1(lines); System.out.println("-------------------------------------------");
+        task2(lines); System.out.println("-------------------------------------------");
+        task3(lines); System.out.println("-------------------------------------------");
+        task4(lines); System.out.println("-------------------------------------------");
+        task5(lines); System.out.println("-------------------------------------------");
+        task6(lines); System.out.println("-------------------------------------------");
+
 
     }
 
     private static String[] text2words(String text) {
         return text.split("[\n\t\f\r,.!?;:() —/]");
     }
-
-/*  увы, не успел с компараторами
-
-    static class StringLengthComparator implements Comparator<String> {
-
-        public int compare(String first, String second) {
-
-            int res = first.length() - second.length();
-            if ( res == 0 ) return 0;
-            if ( res > 0 ) return 1;
-            return -1;
-        }
-    }
-
-    //static class StringABCComparator implements Comparator<String> {}
-*/
 
     public static void task1(String text) {
         if ( text == null ) return;
@@ -61,73 +46,53 @@ public class Counter1DifferentWords {
         System.out.println("Количество слов (различных/с повторами): " + hs.size() + "/" + al.size());
     }
 
+
     public static void task2(String text) {
         if ( text == null ) return;
 
-        HashSet<String> hs = new HashSet<>(Arrays.asList(text2words(text)));
+        List<String> list = new ArrayList<>(new HashSet<>(Arrays.asList(text2words(text))));
+        list.sort((first, second) -> Integer.compare(first.length(), second.length()));
 
-        //определяем интервал для длин слов
-        int minLength = 1001, maxLength = -1;
-        for ( String temp : hs ) {
-            if ( temp.length() > maxLength ) {
-                maxLength = temp.length();
-            }
-            if ( temp.length() < minLength ) {
-                minLength = temp.length();
-            }
-        }
-
-        System.out.println();
-
-        // последовательно отбираем группы слов одинаковой длины
-        int serialNumberWord = 0;
-        for ( int lengthWord = minLength; lengthWord <= maxLength; lengthWord++ ) {
-            for ( String word : hs ) {
-                if ( word.length() == lengthWord ) {
-                    serialNumberWord++;
-                    System.out.println("" + serialNumberWord + ") " + word + " (" + lengthWord + " символов)");
-                }
-            }
+        int count = 0;
+        for ( String temp : list ) {
+            count++;
+            System.out.println("" + count + ") " + temp + " (длина " + temp.length() + ")" );
         }
     }
 
     public static void task3(String text) {
         if ( text == null ) return;
 
-        TreeMap<String, Integer> tm = new TreeMap<>();
+        Comparator<String> comp = new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+                if(s1.length() != s2.length()) {
+                    return s1.length() - s2.length();
+                }
+                else{
+                    return s1.compareTo(s2);
+                }
+            }
+        };
+
+        TreeMap<String, Integer> tm = new TreeMap<>(comp); //byLengthComp.thenComparing(byABCComp) (не понадобилось)
 
         for ( String word : text2words(text) ) {
             tm.merge(word, 1, Integer::sum);
         }
 
-        int minLength = 1001, maxLength = -1;
+        int count = 0;
         for ( Map.Entry<String, Integer> word : tm.entrySet() ) {
-            int word_length = word.getKey().length();
-            if ( word_length > maxLength ) {
-                maxLength = word_length;
-            }
-            if ( word_length < minLength ) {
-                minLength = word_length;
-            }
-        }
-
-        // последовательно отбираем группы слов одинаковой длины
-        int serialNumberWord = 0;
-        for ( int lengthWord = minLength; lengthWord <= maxLength; lengthWord++ ) {
-            for ( Map.Entry<String, Integer> word : tm.entrySet() ) {
-                if ( word.getKey().length() == lengthWord ) {
-                    serialNumberWord++;
-                    System.out.println("" + serialNumberWord + ") " + word.getKey() + " (" + word.getValue() + " раз)");
-                }
-            }
+            count++;
+            System.out.println("" + count + ") " + word.getKey() + " (" + word.getValue() + " раз)");
         }
     }
 
     public static void task4(String text) {
         if ( text == null ) return;
-        List<String> al = new ArrayList<>(Arrays.asList(text.split("[\n]")));
-        for ( int i = ( al.size() - 1 ); i >= 0; i-- ) {
-            System.out.println("" + (i + 1) + ") " + al.get(i));
+        List<String> list = new ArrayList<>(Arrays.asList(text.split("[\n]")));
+        for ( int i = (list.size() - 1); i >= 0; i-- ) {
+            System.out.println("" + (i + 1) + ") " + list.get(i));
         }
     }
 
@@ -138,7 +103,7 @@ public class Counter1DifferentWords {
             private int currentposition;
             private List<E> list;
 
-            public InversionIterator(List list) {
+            public InversionIterator(List<E> list) {
                 this.currentposition = list.size() - 1;
                 this.list = list;
             }
@@ -158,16 +123,16 @@ public class Counter1DifferentWords {
     public static void task6(String text) {
         if ( text.isEmpty() ) return;
 
-        List<String> al = new ArrayList<>(Arrays.asList(text.split("[\n]")));
+        List<String> list = new ArrayList<>(Arrays.asList(text.split("[\n]")));
 
         int line_number;
         Scanner scan = new Scanner(System.in);
         while ( true ) {
-            System.out.println("Укажите номер строки для вывода (от 1 до " + al.size() + "). Для выхода введите 0:");
+            System.out.println("Укажите номер строки для вывода (от 1 до " + list.size() + "). Для выхода введите 0:");
             line_number = scan.nextInt();
-            if ( !(line_number > 0 && line_number <= al.size()) )
+            if ( !(line_number > 0 && line_number <= list.size()) )
                 break;
-            System.out.println(al.get(line_number - 1) + "\n");
+            System.out.println(list.get(line_number - 1) + "\n");
         }
 
     }
