@@ -7,4 +7,4 @@
 
 
 Запуск проверки:
-Задание 1: java -cp target/col-ex-jar-with-dependencies.jar ru.sbt.collections.Counter1DifferentWords
+Задание 1: java -cp target/col-ex-jar-with-dependencies.jar ru.sbt.collections.Task1.DifferentWords
