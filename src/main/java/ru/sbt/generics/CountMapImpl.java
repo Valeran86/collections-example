@@ -13,8 +13,8 @@ public class CountMapImpl<T> implements CountMap<T> {
      * @param o
      */
     @Override
-    public void add(T o){
-        this.holder.merge(o,1, Integer::sum);
+    public void add(T o) {
+        this.holder.merge(o, 1, Integer::sum);
     }
 
     /**
@@ -22,7 +22,7 @@ public class CountMapImpl<T> implements CountMap<T> {
      * @return количество добавлений данного элемента
      */
     @Override
-    public int getCount(T o){
+    public int getCount(T o) {
         return this.holder.get(o);
     }
 
@@ -33,7 +33,7 @@ public class CountMapImpl<T> implements CountMap<T> {
      * @return количество его добавлений (до удаления)
      */
     @Override
-    public int remove(T o){
+    public int remove(T o) {
         return this.holder.remove(o);
     }
 
@@ -41,7 +41,7 @@ public class CountMapImpl<T> implements CountMap<T> {
      * @return количество разных элементов
      */
     @Override
-    public int size(){
+    public int size() {
         return this.holder.size();
     }
 
@@ -51,14 +51,14 @@ public class CountMapImpl<T> implements CountMap<T> {
      * @param source
      */
     @Override
-    public void addAll(CountMap<T> source){
+    public void addAll(CountMap<T> source) {
     }
 
     /**
      * @return Map, где ключ - добавленный элемент, значение - количество его добавлений
      */
     @Override
-    public Map<T, Integer> toMap(){
+    public Map<T, Integer> toMap() {
         return this.holder;
     }
 
